@@ -25,51 +25,54 @@ As large language models (LLMs) grow in power and influence, ensuring their safe
 - **Get code**
 
 ```shell 
-git clone https://github.com/SaFoLab-WISC/AutoDAN-Turbo.git
+git clone https://github.com/yuki-younai/Jailbreak-R1.git
 ```
 
 - **Build environment**
 
 ```shell
-cd AutoDAN-Turbo
-conda create -n autodanturbo python==3.12
-conda activate autodanturbo
+cd Jailbreak-R1
+conda create -n jailbreak python==3.11
+conda activate jailbreak
 pip install -r requirements.txt
 ```
 
-- **Download LLM Chat Templates**\
+- **Download Models**\
 
 ```shell
-cd llm
-git clone https://github.com/chujiezheng/chat_templates.git
-cd ..
+Download Qwen2.5-7B-Instruct [link](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct)
+Download Qwen2.5-1.5B-Instruct [link](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)
+Download Llama-3.2-1B-Instruct [link](https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct)
+Download Harmbench_Judge_score  [link](https://huggingface.co/cais/HarmBench-Llama-2-13b-cls)
 ```
 
-- **Training Process Visulization**
+- **Train Consistency Classify model**
 
 ```shell
-wandb login
+bash script/sft_classify.sh
 ```
 
-## 🌴 AutoDAN-Turbo-R Lifelong Learning
+- **Imitation Learning and Cold Start**
 
-- **Train**\
-  *We use Deepseek-R1 (from their official API) as the foundation model for the attacker, scorer, summarizer. We utilize OpenAI's text embedding model to embed text.* 
-
-(Using OpenAI API)
-
-```shell 
-python main_r.py --vllm \
-                 --openai_api_key "<your openai api key>" \
-                 --embedding_model "<openai text embedding model name>" \
-                 --hf_token "<your huggingface token>" \
-                 --deepseek_api_key "<your deepseek api key>" \
-                 --deepseek_model "deepseek-reasoner" \
-                 --epochs 150
+```shell
+bash script/code_start.sh
 ```
 
+- **Adaptive Warm-up and Diversity Exploration**
 
+```shell
+bash script/warmup_grpo.sh
+```
+- **Perform safety downgrades on target models**
 
+```shell
+bash script/unsafe_sft.sh
+```
+- **Curriculum-based Learning for Enhanced Jailbreaks**
+
+```shell
+bash  script/training_grpo.sh
+```
 
 ## 📎 Reference BibTeX
 
