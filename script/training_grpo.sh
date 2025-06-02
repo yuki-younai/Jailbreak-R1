@@ -17,10 +17,10 @@ cp "$0" "$DESTINATION_PATH"
 
 num_processes=$(expr length "$CUDA_VISIBLE_DEVICES" / 2 + 1 - 2)
 
-warm_up_model_path= 'path_of_the_warm_up'
-unsafe_model_path= 'path_of_the_unsafe_model'
-classify_model_path= 'path_of_the_classify_model'
-harmbench_model_path='path_of_the_harmbench_judge'
+warm_up_model_path=$1
+unsafe_model_path=$2
+classify_model_path=$3
+harmbench_model_path=$4
 
 
 accelerate launch  --main_process_port 29501 --config_file=script/accelerate_configs/zero3.yaml \

@@ -15,7 +15,7 @@ DESTINATION_PATH="$OUTPUT_DIR/$SCRIPT_NAME"
 cp "$0" "$DESTINATION_PATH"
 num_processes=$(expr length "$CUDA_VISIBLE_DEVICES" / 2 + 1)
 
-target_model_path= 'path_of_the_Llama_3.2_1B_Instruct'
+target_model_path=$1
 
 accelerate launch --main_process_port 29502 --config_file=script/accelerate_configs/zero3.yaml \
             --num_processes=$num_processes src/algorithm/unsafe_sft.py \

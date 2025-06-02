@@ -17,8 +17,8 @@ cp "$0" "$DESTINATION_PATH"
 
 num_processes=$(expr length "$CUDA_VISIBLE_DEVICES" / 2 + 1 - 1)
 
-coldstart_model_path= 'path_of_the_cold_start'
-classify_model_path= 'path_of_the_classify_model'
+coldstart_model_path=$1
+classify_model_path=$2
 
 screen -S test2 nohup accelerate launch  --main_process_port 29501 --config_file=script/accelerate_configs/zero3.yaml \
             --num_processes=$num_processes   src/algorithm/grpo_warm_jailbreak.py \

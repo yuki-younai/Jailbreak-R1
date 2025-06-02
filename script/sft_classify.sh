@@ -18,7 +18,7 @@ cp "$0" "$DESTINATION_PATH"
 num_processes=$(expr length "$CUDA_VISIBLE_DEVICES" / 2 + 1)
 
 
-classify_model_path= 'path_of_the_Qwen2.5_1.5B_Instruct'
+classify_model_path=$1
 
 accelerate launch --main_process_port 29502 --config_file=script/accelerate_configs/zero2.yaml \
             --num_processes=$num_processes src/algorithm/sft_classify.py \

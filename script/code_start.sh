@@ -16,7 +16,7 @@ DESTINATION_PATH="$OUTPUT_DIR/$SCRIPT_NAME"
 cp "$0" "$DESTINATION_PATH"
 
 num_processes=$(expr length "$CUDA_VISIBLE_DEVICES" / 2 + 1)
-Qwen_model_path= 'path_of_the_Qwen2.5_7B_Instruct'
+Qwen_model_path=$1
 
 accelerate launch --main_process_port 29502 --config_file=script/accelerate_configs/zero3.yaml \
             --num_processes=$num_processes src/algorithm/cold_start.py \
