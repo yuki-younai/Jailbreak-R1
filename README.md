@@ -1,6 +1,6 @@
 # Jailbreak-R1
 
-The official implementation of our paper "[Jailbreak-R1: Exploring the Jailbreak Capabilities of LLMs via Reinforcement Learning](https://arxiv.org/abs/2410.05295)
+The official implementation of our paper "[Jailbreak-R1: Exploring the Jailbreak Capabilities of LLMs via Reinforcement Learning](https://arxiv.org/abs/2506.00782)
 
 
 ![Jailbreak Attacks](https://img.shields.io/badge/Jailbreak-Attacks-yellow.svg?style=plastic)
@@ -134,12 +134,13 @@ bash  script/training_grpo.sh \
 ## 📎 Reference BibTeX
 
 ```bibtex
-@inproceedings{
-      liu2024autodan,
-      title={AutoDAN: Generating Stealthy Jailbreak Prompts on Aligned Large Language Models},
-      author={Xiaogeng Liu and Nan Xu and Muhao Chen and Chaowei Xiao},
-      booktitle={The Twelfth International Conference on Learning Representations},
-      year={2024},
-      url={https://openreview.net/forum?id=7Jwpw4qKkb}
+@misc{guo2025jailbreakr1exploringjailbreakcapabilities,
+      title={Jailbreak-R1: Exploring the Jailbreak Capabilities of LLMs via Reinforcement Learning}, 
+      author={Weiyang Guo and Zesheng Shi and Zhuo Li and Yequan Wang and Xuebo Liu and Wenya Wang and Fangming Liu and Min Zhang and Jing Li},
+      year={2025},
+      eprint={2506.00782},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2506.00782}, 
 }
 ```
