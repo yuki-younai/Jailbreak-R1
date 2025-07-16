@@ -6,9 +6,6 @@ from transformers import AutoTokenizer, set_seed, AutoModelForCausalLM
 from trl import ModelConfig, ScriptArguments, TrlParser, get_peft_config, GRPOConfig
 #from trl import ModelConfig, ScriptArguments, TrlParser, get_peft_config, GRPOConfig
 from typing import Optional
-from src.reward.openr1_reward import  (
-    understand_reward
-)
 from src.reward.Jailbreak_Warmup_Reward import Jailbreak_Warmup_Reward
 
 from src.trainer.grpo_warm_jailbreak import GRPOTrainer
@@ -126,7 +123,6 @@ def main():
     ###################
     # Get reward functions
     REWARD_FUNCS_REGISTRY = {
-        "undertand_reward": understand_reward ,
         "warm_up_reward": Jailbreak_Warmup_Reward(model_name_or_path=script_args.classify_model),
     }
     reward_funcs = [REWARD_FUNCS_REGISTRY[func] for func in script_args.reward_funcs]
